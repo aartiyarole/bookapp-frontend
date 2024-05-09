@@ -1,0 +1,94 @@
+
+<div *ngFor="let ctg of categories">
+    <h3 class="search-heading text-center" *ngIf="ctg.categoryId==categoryId">Books in {{ctg.categoryName}}</h3>
+  </div>
+  
+<div class="form-container mt-4 mb-4 mx-auto border-bottom border-3" >
+    <form class="form row mb-3 mx-auto justify">
+      <div class="col-sm-4 form-group">
+        <label>Start Date: </label>
+        <input type="date" [(ngModel)]="bookingDuration.startDate" name="startDate"
+          class="form-control mt-2" id="startDate">
+      </div>
+  
+      <div class="col-sm-4 form-group">
+        <label>End Date: </label>
+        <input type="date" [(ngModel)]="bookingDuration.endDate" name="endDate"
+          class="form-control mt-2">
+      </div>
+  
+      <div class="col-sm-4 form-group">
+        <input type="button" class="btn btn-default btn-success" (click)="saveDuration()" value="Save">
+      </div>
+  
+    </form>
+  
+  </div>
+  
+ 
+<div class="container">
+    <div class="row" >
+      <div class="col-sm-6 col-lg-3 mb-3 " *ngFor="let book of ourBooks; let i = index " (click)="makeBooking(book)" >
+        <app-book-card [bookData]="book" [borderColor]="i" ></app-book-card>
+        
+      </div>
+    </div>
+</div>
+
+  
+  <!-- BOOKING DETAILS -->
+  
+  <div id="bookingModal" class="modal">
+    <div class="modal-dialog">
+  
+      <div class="modal-content">
+  
+        <div class="col-12 modal-header">
+          <h4 class="modal-title">Booking Details</h4>
+          <button type="button" class="btn-close" (click)="closeBookingDetails()" data-bs-dismiss="modal"></button>
+  
+        </div>
+        <div class="modal-body">
+          <div class="row pt-1">
+            <div class="col-12" id="cardimg">
+              <img [src]="bookingDetails.bookPicUrl" alt="Book Picture" class="img-fluid mx-auto">
+            </div>
+          </div>
+  
+          <div class="row pt-1">
+            <div class="col-12">
+              <p class="text-center"><strong>{{bookingDetails.bookName}}</strong></p>
+            </div>
+          </div>
+  
+          <div class="row pt-1">
+            <div class="col-6">
+              <p class="text-center"><strong>Starting:</strong> {{bookingDetails.checkOutDate.split('T')[0]}}
+              </p>
+            </div>
+            <div class="col-6">
+              <p class="text-center"><strong>Ending:</strong> {{bookingDetails.returnDate.split('T')[0]}}</p>
+            </div>
+          </div>
+  
+          <div class="row pt-1">
+            <div class="col-6">
+              <p class="text-center"><strong>Duration :</strong> {{bookingDetails.readDuration}} days</p>
+            </div>
+            <div class="col-6">
+              <p class="text-center"><strong>Category :</strong> {{bookingDetails.categoryName}}</p>
+            </div>
+          </div>
+          <div class="row pt-1">
+            <div class="col-12">
+              <p class="text-center"><strong>Total Cost : {{bookingDetails.totalRentCost | currency:'INR'}}</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="paymentDone()" class="btn btn-default btn-success form-control">Pay Now</button>
+        </div>
+      </div>
+    </div>
+
+

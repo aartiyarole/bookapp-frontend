@@ -1,0 +1,27 @@
+
+.about {
+  background-color: #add8e6;
+  border-radius: 5px;
+  padding:30px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 200px;
+}
+
+.about h1 {
+  color: #000080;
+  text-align: center;
+}
+
+.about h2{
+  font-size: 20px;
+  color: #B76E79;
+  text-decoration: underline;
+}
+
+.about p {
+  color: #666;
+  line-height: 1.6;
+}

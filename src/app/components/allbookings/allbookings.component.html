@@ -1,0 +1,23 @@
+
+<div class="container" style="margin-bottom: 20px;">
+    <!-- Booking Entries Section -->
+    <div *ngIf="allBookings.length !== 0" >
+        <h3>All User Rentals</h3>
+        <ul class="list-group">
+            <li *ngFor="let booking of allBookings" class="list-group-item">
+                <strong>Name:</strong> {{ booking.userName }}<br>
+                <strong>Email:</strong> {{ booking.userEmailId }}<br>
+                <strong>Book Name:</strong> {{ booking.bookName }}<br>
+                <strong>Book Category:</strong> {{ booking.categoryName }}<br>
+                <strong>Check Out Date:</strong> {{booking.checkOutDate.split('T')[0] }}  
+                <strong>Return Date:</strong> {{booking.returnDate.split('T')[0]}}<br>
+                <strong>Total Rent Cost:</strong> {{booking.totalRentCost}}
+            </li>
+        </ul>
+    </div>
+
+    <div *ngIf="allBookings.length === 0">
+        <p>No bookings made yet.</p>
+    </div>
+</div>
+

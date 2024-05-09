@@ -1,0 +1,14 @@
+<div class="container">
+  <div *ngIf="feedbacks.length > 0; else noFeedback" class="tab" >
+      <h2>User Feedbacks</h2>
+      <div *ngFor="let feedback of feedbacks" class="review">
+        <h3>Name: {{feedback.name}}</h3>
+        <h3>Email: {{feedback.emailId}}</h3>
+        <p>Message: {{feedback.message}}</p>
+      </div>
+  </div>
+
+  <ng-template #noFeedback>
+    <p class="msg">No User Feedbacks yet.</p>
+  </ng-template>
+</div>

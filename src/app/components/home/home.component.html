@@ -1,0 +1,15 @@
+
+<div id="booking" >
+    <h1 class="title">Book Rental App</h1>
+    <p class="catchy-line">Dive into a world of stories! Select a category and let your book adventure begin.</p>
+    <form id="form" (submit)="navigateToSearchPage($event)">
+        <select  [(ngModel)]="fromCategory" class="placeholder1 form-control"  name="fromCategory" id="start">
+            <option value="" disabled >Choose A Category</option>
+            <option *ngFor="let category of categories"  [value]="category.categoryId" class="ctg-opt">{{category.categoryName}}</option>
+        </select>
+ 
+        <div class="button-container">
+            <button id="primaryButton" type="submit" >FIND BOOKS</button>
+        </div>
+    </form> 
+</div>

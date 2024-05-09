@@ -1,0 +1,13 @@
+
+<div class="card">
+    <div class="card-body" [ngClass]="borderColor % 2===0?'even':'odd'">
+        <div class="card-title">
+            {{bookData?.bookName}}
+        </div>
+        <img [src]="bookData?.imageUrl" alt="Book Image" class="card-img-top">
+        <p class="card-text">Price: <span style="font-weight:bold">{{bookData?.price  | currency:'INR'}}/day</span></p>
+        <p class="card-text">Category: {{bookData?.categoryName}}</p>
+        <button class="btn btn-book-now" [disabled]="!bookData?.availability">{{bookData?.availability ? 'Rent Now' : 'Not Available'}}</button>
+    </div>
+</div>
+

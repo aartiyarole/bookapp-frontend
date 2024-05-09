@@ -1,0 +1,30 @@
+
+<div class="container">
+    
+    <div class="profile-info">
+        <img src="assets/img/profile.jpg" alt="User Profile Picture">
+        <div class="details">
+        <div ><strong> Name :</strong> {{userName}}</div>
+        <div ><strong> Email :</strong> {{userEmail}}</div>
+        <div ><strong> Mobile No :</strong> {{userMobileNo}}</div>
+        </div>
+    </div>
+
+
+    <div *ngIf="bookedBooks.length !== 0" >
+        <h4>Your Rented Books Details</h4>
+        <ul class="list-group">
+            <li *ngFor="let book of bookedBooks" class="list-group-item">
+                <strong>Book Name:</strong> {{ book.bookName }}<br>
+                <strong>Book Category:</strong> {{ book.categoryName }}<br>
+                <strong>Check Out Date:</strong> {{book.checkOutDate.split('T')[0]  }}   &nbsp;
+                <strong>Return Date:</strong> {{book.returnDate.split('T')[0]}}<br>
+                <strong>Total Rent Cost:</strong> {{book.totalRentCost}}
+            </li>
+        </ul>
+    </div>
+
+    <div *ngIf="bookedBooks.length === 0">
+        <p>No books rented yet.</p>
+    </div>
+</div>

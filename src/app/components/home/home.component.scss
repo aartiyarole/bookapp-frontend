@@ -1,0 +1,77 @@
+#booking {
+  width: 100%;
+  height: 500px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  background-image: url("../../../assets/img/ai.jpg");
+}
+.button-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+#primaryButton {
+  width: 200px;
+  height: 50px;
+  background-color: #10a310;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease; 
+}
+
+#primaryButton:hover {
+  background-color: #811a30; /* Darker shade when hovered */
+}
+
+#form {
+  display:grid;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+  width: 80%; /* Reduce width for a centered look */
+}
+
+.placeholder1,
+option {
+  width: 400px;
+  height: 50px;
+  text-align: center;
+  margin: 0;
+  border-radius: 5px;
+  border: 1px solid #ccc; /* Add a subtle border */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add a subtle shadow for depth */
+}
+
+.ctg-opt{
+  font-family: Georgia;
+  font-weight: bold;
+}
+
+.catchy-line {
+  font-size: 1.2em;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #add8e6; /* Light blue */
+  border: 2px solid #000080; /* Deep Ocean Blue */
+  border-radius: 5px;
+}
+
+.title{
+  border: 1px solid #811a30;
+  background-color: #B76E79;
+  color: #080808;
+  text-decoration: solid;
+  font-family: Georgia;
+  padding: 10px;
+  border-radius: 5px;
+
+}

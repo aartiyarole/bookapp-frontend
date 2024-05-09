@@ -1,0 +1,196 @@
+
+ <nav class="navbar navbar-expand-lg  point" *ngIf="nav.visible">
+  <div class="container">
+    
+    <a class="navbar-brand" >
+      <img id="logoSize" src="assets/img/logo.jpg" alt="img" class="d-inline-block align-text-top" >
+      
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!--admin navbar-->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="loggedUserObj?.isAdmin">
+        <li class="nav-item active">
+          <a class="nav-link " routerLink="/admin-dashboard" >Dashboard</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " routerLink="/add-book" >Add Book</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " routerLink="/all-bookings" >User Rentals</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " routerLink="/user-feedbacks" >User FeedBacks</a>
+        </li>
+      </ul>
+      
+      <!-- Regular login navbar -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " *ngIf="loggedUserObj && !loggedUserObj.isAdmin" >
+        <li class="nav-item active">
+          <a class="nav-link " routerLink="/home" >Home </a>
+        </li> 
+        <li class="nav-item active">
+          <a class="nav-link " routerLink="/user-profile" >User Profile</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link "routerLink="/contact" >Contact Us</a>
+        </li>
+      </ul>
+      
+      <!-- Default navbar -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " *ngIf="!loggedUserObj" >
+        <li class="nav-item active">
+          <a class="nav-link " routerLink="/home" >Home </a>
+        </li> 
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/about" >About Us</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link "routerLink="/contact" >Contact Us</a>
+        </li>
+        
+      </ul>
+
+
+
+      <form class="d-flex" *ngIf="loggedUserObj"> 
+        <button class="btn round-button mx-2"  type="button" id="lbtn">{{loggedUserObj.name}}</button>
+        <button class="btn round-button" (click)="logOff()" type="button" id="rbtn">Log Off</button>
+      </form>
+      <form class="d-flex" *ngIf="!loggedUserObj"> 
+        <button class="btn round-button mx-2" (click)="openLogin()"  type="button" id="lbtn">Login</button>
+        <button class="btn round-button" (click)="openRegister()" type="button" id="rbtn">Register</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Router Outlet -->
+<div class="point" style="min-height:80vh;">
+  <router-outlet></router-outlet>
+</div>
+  
+
+<div class="footer point">
+  <app-footer></app-footer>
+</div>
+
+
+<!-- REGISTER POPUP -->
+
+<div id="registerModal" class="modal point" >
+  <div class="modal-dialog">
+ 
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+        <button type="button" class="btn-close" (click)="closeRegister()" data-bs-dismiss="modal"></button>
+        
+      </div>
+      <form [formGroup]="registerObj" (ngSubmit)="onRegister()">
+      <div class="modal-body"> 
+        <div class="row pt-1">
+          <div class="col-6">
+            <label for="">Name</label>
+            <input type="text" formControlName="name" name="name" class="form-control mt-2" >
+          <small *ngIf="registerObj.controls['name'].invalid && (registerObj.controls['name'].dirty || registerObj.controls['name'].touched)" class="block p-error">
+            <div *ngIf="(registerObj.controls['name'].errors)?.['required']" class="err-msg">Name is required</div>
+            <div *ngIf="(registerObj.controls['name'].errors)?.['pattern']" class="err-msg">Name is Invalid (symbols not allowed)</div>
+          </small>
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col-6">
+            <label>Email</label>
+            <input type="email" formControlName="emailId" name="emailId" class="form-control mt-2"> 
+            <small *ngIf="registerObj.controls['emailId'].invalid && (registerObj.controls['emailId'].dirty || registerObj.controls['emailId'].touched)" class="block p-error">
+              <div *ngIf="(registerObj.controls['emailId'].errors)?.['required']" class="err-msg">Email is required</div>
+              <div *ngIf="(registerObj.controls['emailId'].errors)?.['email']" class="err-msg">Email should be valid</div>
+            </small>
+          </div>
+
+          <div class="col-6">
+            <label>Mobile Number</label>
+            <input type="text" formControlName="mobileNo" name="mobileNo" name="number" class="form-control mt-2" >
+            <small *ngIf="registerObj.controls['mobileNo'].invalid && (registerObj.controls['mobileNo'].dirty || registerObj.controls['mobileNo'].touched)" class="block p-error">
+              <div *ngIf="(registerObj.controls['mobileNo'].errors)?.['required']" class="err-msg">Mobile No is required</div>
+              <div *ngIf="(registerObj.controls['mobileNo'].errors)?.['pattern']" class="err-msg">Mobile Number must have 10 digits</div>
+            </small>
+          </div>
+        </div>
+
+        <div class="row pt-2"><div class="col-12">
+            <label>Password</label>
+            <input type="password" formControlName="password" name="password" class="form-control mt-2" >
+            <small *ngIf="registerObj.controls['password'].invalid && (registerObj.controls['password'].dirty || registerObj.controls['password'].touched)" class="block p-error">
+              <div *ngIf="(registerObj.controls['password'].errors)?.['required']" class="err-msg">Password is required</div>
+              <div *ngIf="(registerObj.controls['password'].errors)?.['pattern']" class="err-msg">
+                include Upppercase, Number, Symbol and minimum 6char.</div>
+            </small>
+          </div>
+        </div>
+         
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default btn-success"  data-dismiss="modal" [disabled]="registerObj.invalid">Register</button>
+        <button type="button" class="btn btn-default btn-danger" (click)="closeRegister()" data-dismiss="modal">Close</button>
+      </div>
+      <div class="modal-footer">
+        <p>Already a user ? <button class="btn btn-default btn-light  text-primary" (click)="openLogin()">Login</button></p>
+      </div>
+    </form> 
+    </div>
+
+  </div>
+</div>
+
+<!-- Login Popup -->
+
+<div id="loginModal" class="modal point" >
+  <div class="modal-dialog">
+ 
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+        <button type="button" class="btn-close" (click)="closeLogin()" data-bs-dismiss="modal"></button>
+        
+      </div>
+      <div class="modal-body"> 
+        <div class="row pt-1">
+          <div class="col-12">
+            <label>Email</label>
+            <input type="email" [(ngModel)]="loginObj.emailId" class="form-control mt-2"> 
+          </div>
+        </div>
+        <div class="row pt-1">
+          <div class="col-12">
+            <label>Password</label>
+            <input type="password" [(ngModel)]="loginObj.password" class="form-control mt-2" >
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-success" (click)="onLogin()" data-dismiss="modal">Login</button>
+        <button type="button" class="btn btn-default btn-danger" (click)="closeLogin()" data-dismiss="modal">Close</button>
+      </div>
+      <div class="modal-footer">
+        <p>Not a user ? <button class="btn btn-default btn-light text-primary" (click)="openRegister()">Register</button></p>
+      </div> 
+       
+    </div>
+
+  </div>
+</div>
+
+
+

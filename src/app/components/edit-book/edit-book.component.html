@@ -1,0 +1,63 @@
+
+
+<div class="row justify-content-center" style="background-color: #c9b8a9;">
+    <div class="col-md-8">
+        <div>
+            <h1>Edit Book</h1>
+        </div>
+        <form [formGroup]="bookDetails" (ngSubmit)="updateBookDetails()" class="bookform">
+            <div class="mb-3">
+                <label>Book Name</label>
+                <input type="text" class="form-control" formControlName="bookName" name="bookName" placeholder="Book Name" >
+                <small *ngIf="bookDetails.controls['bookName'].invalid && (bookDetails.controls['bookName'].dirty || bookDetails.controls['bookName'].touched)" class="block p-error">
+                    <div *ngIf="(bookDetails.controls['bookName'].errors)?.['required']" class="err-msg">Book Name is required</div>
+                </small>
+            </div>
+            <div class="mb-3">
+                <label>Category Name</label>
+                <select class="form-control" formControlName="categoryName" name="categoryName" placeholder="Category Name" >
+                    <option >Select Category</option>
+                    <option >Fiction</option>
+                    <option >Non-Fiction</option>
+                    <option>Fantasy</option>
+                </select>
+                <small *ngIf="bookDetails.controls['categoryName'].invalid && (bookDetails.controls['categoryName'].dirty || bookDetails.controls['categoryName'].touched)" class="block p-error">
+                    <div *ngIf="(bookDetails.controls['categoryName'].errors)?.['required']" class="err-msg">Category Name is required</div>
+                </small>
+            </div>
+            <div class="mb-3">
+                <label>Category ID</label>
+                <input type="text" class="form-control" formControlName="categoryId" name="categoryId" placeholder="eg. Fiction: 1 , Non Fiction: 2 ,  Fantasy: 3" pattern="[0-9]*"  >
+                <small *ngIf="bookDetails.controls['categoryId'].invalid && (bookDetails.controls['categoryId'].dirty || bookDetails.controls['categoryId'].touched)" class="block p-error">
+                    <div *ngIf="(bookDetails.controls['categoryId'].errors)?.['required']" class="err-msg">Category ID is required</div>
+                    <div *ngIf="(bookDetails.controls['categoryId'].errors)?.['pattern']" class="err-msg">Only numbers are allowed</div>
+                </small>
+            </div>
+            
+            <div class="mb-3">
+                <label>Price / day </label>
+                <input type="text" class="form-control" formControlName="price" name="price" placeholder="Price" pattern="[0-9]*" >
+                <small *ngIf="bookDetails.controls['price'].invalid && (bookDetails.controls['price'].dirty || bookDetails.controls['price'].touched)" class="block p-error">
+                    <div *ngIf="(bookDetails.controls['price'].errors)?.['required']" class="err-msg">Price is required</div>
+                    <div *ngIf="(bookDetails.controls['price'].errors)?.['pattern']" class="err-msg">Only numbers are allowed</div>
+                </small>
+            </div>
+            <div class="mb-3">
+                <label>Image URL</label>
+                <input type="text" class="form-control" formControlName="imageUrl" name="imageUrl" placeholder="Image URL" alt="Book Image">
+                <small *ngIf="bookDetails.controls['imageUrl'].invalid && (bookDetails.controls['imageUrl'].dirty || bookDetails.controls['imageUrl'].touched)" class="block p-error">
+                    <div *ngIf="(bookDetails.controls['imageUrl'].errors)?.['required']" class="err-msg">Image URL is required</div>
+                </small>
+            </div>
+            <div class="mb-3">
+                <label>Availability</label>
+                <input type="checkbox"  formControlName="availability" name="availability"v style="margin-left: 10px;">
+            </div>
+            
+            
+            
+            <button type="submit" class="btn btn-primary" [disabled]="bookDetails.invalid" id="p">Update</button>
+            <button type="button" class="btn btn-secondary" routerLink="/admin-dashboard" style=" margin: 0px 0px 10px 10px; width:80px">Back</button>
+        </form>
+    </div>
+</div>

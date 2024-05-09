@@ -1,0 +1,50 @@
+body {
+  font-family: Arial;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+.tab {
+  background-color: #add8e6;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.review {
+  background-color: #c9b8a9;
+  border: 1px solid #0a0a0a;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.review h3 {
+  color: #705c3d;
+  margin-bottom: 5px;
+  font-size: large;
+}
+
+.review p {
+  color: #291a05;
+
+}
+
+h2 {
+  color: #5c4420;
+  margin-bottom: 20px;
+  font-family: Cambria;
+  font-weight: bolder;
+}
+
+.msg {
+  text-align: center;
+  color: #1a1717;
+  font-size: large;
+
+}

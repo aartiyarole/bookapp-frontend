@@ -1,0 +1,57 @@
+
+.search-heading {
+    color: #000080;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #B76E79;
+    padding:15px;
+    color: #ffffff;
+    
+}
+
+.form-group label {
+    font-weight: bold;
+    text-align: start;
+    width: 100px; 
+}
+
+.form-group input {
+    margin-top: 10px;
+    width: calc(100% - 100px); 
+}
+
+.btn-success {
+    width: 100px; 
+    background-color: #28a745;
+    border-color: black;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    color: #6c757d;
+}
+
+.modal-title {
+    color: #6c757d;
+    font-weight: bold;
+}
+
+.modal-body p {
+    color: #6c757d;
+}
+
+.btn-close {
+    color: #6c757d;
+}
+
+#cardimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

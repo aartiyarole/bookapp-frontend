@@ -1,0 +1,44 @@
+h3{
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bolder;
+    font-family: Cambria;
+}
+body {
+    font-family: 'Georgia';
+    background-color: #f5f0e1;
+  }
+  
+  .container {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #add8e6;
+    border-radius: 15px;
+  }
+  
+  h3 {
+    color: #5c4420;
+    margin-bottom: 20px;
+  }
+  
+  .list-group{
+    padding: 10px;
+  }
+  .list-group-item {
+    background-color: #c9b8a9;
+    border: 1px solid #2c2924;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  }
+  
+  .list-group-item strong {
+    color: #705c3d;
+  }
+  
+  .list-group-item p {
+    color: #291a05;
+  }
+  
